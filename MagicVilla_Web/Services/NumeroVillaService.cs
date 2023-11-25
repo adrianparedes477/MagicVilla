@@ -2,6 +2,7 @@
 using MagicVilla_Web.Models;
 using MagicVilla_Web.Models.Dto;
 using MagicVilla_Web.Services.IServices;
+using NuGet.Common;
 
 namespace MagicVilla_Web.Services
 {
@@ -16,54 +17,59 @@ namespace MagicVilla_Web.Services
             _villaUrl = configuration.GetValue<string>("ServiceUrls:API_URL");
         }
 
-        public Task<T> Actualizar<T>(NumeroVillaUpdateDto dto)
+        public Task<T> Actualizar<T>(NumeroVillaUpdateDto dto,string token)
         {
             return SeedAsync<T>(new APIRequest()
             {
                 APITipo = DS.APITipo.PUT,
                 Datos = dto,
-                Url = _villaUrl + "/api/NumeroVilla/" + dto.VillaNo
+                Url = _villaUrl + "/api/NumeroVilla/" + dto.VillaNo,
+                Token = token
 
             });
         }
 
-        public Task<T> Crear<T>(NumeroVillaCreateDto dto)
+        public Task<T> Crear<T>(NumeroVillaCreateDto dto, string token)
         {
             return SeedAsync<T>(new APIRequest()
             {
                 APITipo = DS.APITipo.POST,
                 Datos = dto,
-                Url = _villaUrl + "/api/NumeroVilla"
+                Url = _villaUrl + "/api/NumeroVilla",
+                Token = token
 
             });
         }
 
-        public Task<T> Obtener<T>(int id)
+        public Task<T> Obtener<T>(int id, string token)
         {
             return SeedAsync<T>(new APIRequest()
             {
                 APITipo = DS.APITipo.GET,
-                Url = _villaUrl + "/api/NumeroVilla/" + id
+                Url = _villaUrl + "/api/NumeroVilla/" + id,
+                Token = token
 
             });
         }
 
-        public Task<T> ObtenerTodos<T>()
+        public Task<T> ObtenerTodos<T>(string token)
         {
             return SeedAsync<T>(new APIRequest()
             {
                 APITipo = DS.APITipo.GET,
-                Url = _villaUrl + "/api/NumeroVilla"
+                Url = _villaUrl + "/api/NumeroVilla",
+                Token = token
 
             });
         }
 
-        public Task<T> Remover<T>(int id)
+        public Task<T> Remover<T>(int id, string token)
         {
             return SeedAsync<T>(new APIRequest()
             {
                 APITipo = DS.APITipo.DELETE,
-                Url = _villaUrl + "/api/NumeroVilla/" + id
+                Url = _villaUrl + "/api/NumeroVilla/" + id,
+                Token = token
 
             });
         }
