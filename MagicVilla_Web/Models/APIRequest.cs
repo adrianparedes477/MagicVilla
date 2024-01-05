@@ -11,5 +11,15 @@ namespace MagicVilla_Web.Models
         public object Datos { get; set; }
 
         public string Token { get; set; }
+
+        public Parametros Parametros { get; set; }
+
+    }
+
+    public class Parametros
+    {
+        public int PageNumber { get; set; }
+
+        public int PageSize { get; set; }
     }
 }

@@ -1,0 +1,782 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Magic Villa v1",
+    "description": "API para Villas",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/NumeroVilla": {
+      "get": {
+        "tags": [
+          "NumeroVilla"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NumeroVilla"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NumeroVillaCreateDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/NumeroVilla/{id}": {
+      "get": {
+        "tags": [
+          "NumeroVilla"
+        ],
+        "operationId": "GetNumeroVilla",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NumeroVilla"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NumeroVilla"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NumeroVillaUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Usuario/login": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Usuario/registrar": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RegistroRequestDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/Villa": {
+      "get": {
+        "tags": [
+          "Villa"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Villa"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/VillaCreateDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/Villa/{id}": {
+      "get": {
+        "tags": [
+          "Villa"
+        ],
+        "operationId": "GetVilla",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/APIResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Villa"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Villa"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/VillaUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Villa"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "APIResponse": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "$ref": "#/definitions/HttpStatusCode"
+        },
+        "isExitoso": {
+          "type": "boolean"
+        },
+        "errorMessages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resultado": { }
+      },
+      "additionalProperties": false
+    },
+    "HttpStatusCode": {
+      "format": "int32",
+      "enum": [
+        100,
+        101,
+        102,
+        103,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        226,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        421,
+        422,
+        423,
+        424,
+        426,
+        428,
+        429,
+        431,
+        451,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        510,
+        511
+      ],
+      "type": "integer"
+    },
+    "LoginRequestDTO": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumeroVillaCreateDto": {
+      "required": [
+        "villaId",
+        "villaNo"
+      ],
+      "type": "object",
+      "properties": {
+        "villaNo": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "villaId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detalleEspecial": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumeroVillaUpdateDto": {
+      "required": [
+        "villaId",
+        "villaNo"
+      ],
+      "type": "object",
+      "properties": {
+        "villaNo": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "villaId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detalleEspecial": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "operationType": {
+          "$ref": "#/definitions/OperationType"
+        },
+        "path": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "value": { }
+      },
+      "additionalProperties": false
+    },
+    "OperationType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "type": "integer"
+    },
+    "ProblemDetails": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": { }
+    },
+    "RegistroRequestDTO": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "nombres": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "rol": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VillaCreateDto": {
+      "required": [
+        "nombre"
+      ],
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "maxLength": 30,
+          "minLength": 1,
+          "type": "string"
+        },
+        "detalle": {
+          "type": "string"
+        },
+        "tarifa": {
+          "format": "double",
+          "type": "number"
+        },
+        "ocupantes": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "metrosCuadrados": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "imagenUrl": {
+          "type": "string"
+        },
+        "amenidad": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VillaUpdateDto": {
+      "required": [
+        "id",
+        "imagenUrl",
+        "metrosCuadrados",
+        "nombre",
+        "ocupantes"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nombre": {
+          "maxLength": 30,
+          "minLength": 1,
+          "type": "string"
+        },
+        "detalle": {
+          "type": "string"
+        },
+        "tarifa": {
+          "format": "double",
+          "type": "number"
+        },
+        "ocupantes": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "metrosCuadrados": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "imagenUrl": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "amenidad": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Ingresar Bearer [space] tuToken \r\n\r\n Ejemplo: Bearer 123456abcder"
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
