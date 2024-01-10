@@ -20,7 +20,7 @@ namespace MagicVilla_API.Controllers
             _response = new();
         }
 
-        [HttpPost("login")]
+        [HttpPost("login")]   // /api/usuario/login
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO modelo)
         {
             var loginResponse = await _usuarioRepo.Login(modelo);
@@ -37,7 +37,8 @@ namespace MagicVilla_API.Controllers
             return Ok(_response);
         }
 
-        [HttpPost("registrar")]
+
+        [HttpPost("registrar")]   // /api/usuario/registrar
         public async Task<IActionResult> Registrar([FromBody] RegistroRequestDTO modelo)
         {
             bool isUsuarioUnico = _usuarioRepo.IsUsuarioUnico(modelo.UserName);
@@ -61,5 +62,7 @@ namespace MagicVilla_API.Controllers
             _response.IsExitoso = true;
             return Ok(_response);
         }
+
+
     }
 }
